@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuliang Liu - Personal Website</title>
+    <meta name="description" content="Personal website of Shuliang Liu - Photography & Theater enthusiast, student at Hong Kong Baptist University.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #764ba2;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            text-decoration: none;
+            color: #667eea;
+            padding: 0.5rem 1rem;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .contact-links a:hover::before {
+            left: 0;
+        }
+
+        .contact-links a:hover {
+            color: white;
+            border-color: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%) 1;
+            padding-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .blog-list {
+            list-style: none;
+        }
+
+        .blog-item {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .blog-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-radius: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .blog-item:hover::before {
+            opacity: 1;
+        }
+
+        .blog-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .blog-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-item a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+
+        .blog-item a:hover {
+            color: #667eea;
+            text-decoration: underline;
+        }
+
+        .blog-meta {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-excerpt {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .interest-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .interest-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+        }
+
+        .interest-item h3 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .theater-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .theater-photo {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .theater-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .theater-caption {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #667eea;
+        }
+
+        /* 添加简单的加载动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .section {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-links a {
+                width: 180px;
+                text-align: center;
+            }
+
+            .theater-gallery {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .theater-photo {
+                height: 250px;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            header {
+                padding: 1.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/profile.jpg" alt="Shuliang Liu" class="profile-photo">
+        <h1>Shuliang Liu</h1>
+        <p class="tagline">Photography & Theater Enthusiast, Student at HKBU</p>
+        <div class="contact-links">
+            <a href="mailto:2509293907@qq.com">Email</a>
+            <a href="https://twitter.com/shuliangphoto" target="_blank">Twitter</a>
+            <a href="https://github.com/shuliangdev" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/shuliang-liu-hkbu" target="_blank">LinkedIn</a>
+            <a href="https://instagram.com/shuliang_captures" target="_blank">Instagram</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>About Me</h2>
+            <div class="about-text">
+                <p>Hello! My name is Shuliang Liu. I'm a 20-year-old student from China, born on March 24, 2005.</p>
+                
+                <p>Currently, I'm studying at Hong Kong Baptist University, where I'm exploring my passion for the arts and self-expression. My main interests are photography and theater — I enjoy capturing quiet moments through the lens, and bringing stories to life on stage.</p>
+                
+                <p>This website is my personal space to document what I love, reflect on what I learn, and connect with those who share similar interests.</p>
+                
+                <p>📧 Feel free to reach out: <a href="mailto:2509293907@qq.com" style="color: #3498db; text-decoration: none;">2509293907@qq.com</a></p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Recent Writing</h2>
+            <ul class="blog-list">
+                <li class="blog-item">
+                    <h3><a href="blog/first-post.html">Welcome to My Digital Garden</a></h3>
+                    <div class="blog-meta">January 15, 2025</div>
+                    <p class="blog-excerpt">Thoughts on starting a personal website and why I decided to keep things simple. Sometimes the best solutions are the most straightforward ones.</p>
+                </li>
+                <li class="blog-item">
+                    <h3><a href="blog/on-simplicity.html">The Beauty of Simplicity</a></h3>
+                    <div class="blog-meta">January 10, 2025</div>
+                    <p class="blog-excerpt">Exploring why minimalism in design and life can lead to more meaningful experiences and clearer thinking.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Interests & Hobbies</h2>
+            <div class="interests-grid">
+                <div class="interest-item">
+                    <h3>📸 Photography</h3>
+                    <p>Capturing quiet moments and emotions through the lens, exploring light and composition.</p>
+                </div>
+                <div class="interest-item">
+                    <h3>🎭 Theater</h3>
+                    <p>Bringing stories to life on stage, exploring character development and storytelling.</p>
+                </div>
+                <div class="interest-item">
+                    <h3>🎨 Arts</h3>
+                    <p>Exploring various forms of artistic expression and creative self-discovery.</p>
+                </div>
+                <div class="interest-item">
+                    <h3>🎓 Learning</h3>
+                    <p>Continuous growth through academic studies and personal exploration at HKBU.</p>
+                </div>
+            </div>
+            
+            <div class="theater-gallery">
+                <div>
+                    <img src="images/theater1.jpg" alt="Theater Performance 1" class="theater-photo">
+                    <div class="theater-caption">Theater Performance - Award Ceremony</div>
+                </div>
+                <div>
+                    <img src="images/theater2.jpg" alt="Theater Performance 2" class="theater-photo">
+                    <div class="theater-caption">Theater Group Performance</div>
+                </div>
+                <div>
+                    <img src="images/theater3.jpg" alt="Theater Performance 3" class="theater-photo">
+                    <div class="theater-caption">Traditional Theater Role</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Shuliang Liu. Built with intention and simplicity.</p>
+    </footer>
+</body>
+</html>
