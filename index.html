@@ -12,17 +12,12 @@
             box-sizing: border-box;
         }
 
-<!-- 添加 Mendable 聊天组件容器 -->
-<div id="mendable-component"></div>
-
-<!-- 引入 Mendable 脚本 -->
 <script src="https://unpkg.com/@mendable/search@latest/dist/umd/mendable-bundle.min.js"></script>
 
 <script>
   Mendable.initialize({
     anon_key: '950d536a-c747-45fe-b8ac-63ff8b83da95',
-    type: "floatingButton",  // 或者换成 "searchBar"
-    elementId: "mendable-component" // 指定挂载到哪个容器
+    type: "floatingButton"
   });
 </script>
 
