@@ -1,0 +1,22 @@
+<!-- Mendable Widget Integration -->
+
+<!-- Search bar container -->
+<div id="mendable-search"></div>
+
+<!-- Load Mendable bundle only once -->
+<script src="https://unpkg.com/@mendable/search@0.0.205/dist/umd/mendable-bundle.min.js"></script>
+
+<script>
+  // Initialize Mendable Search Bar
+  Mendable.initialize({
+    anon_key: '950d536a-c747-45fe-b8ac-63ff8b83da95',
+    type: "searchBar",
+    elementId: "mendable-search"
+  });
+
+  // Initialize Mendable Floating Button (optional)
+  Mendable.initialize({
+    anon_key: '950d536a-c747-45fe-b8ac-63ff8b83da95',
+    type: "floatingButton"
+  });
+</script>
